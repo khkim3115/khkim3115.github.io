@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 스플랜더 트레이 앱 아이콘(splendor/scripts/gen-desktop-icon.cjs)의 꼭짓점·색을 그대로 옮긴 SVG.
+       웹 쪽에는 게임 아이콘 SVG 가 없어(public/favicon.svg 는 Vite 기본 로고) 이 도형을 기준으로 삼는다. -->
+  <rect width="512" height="512" fill="#14161a"/>
+  <!-- 패싯: 위에서 오는 빛 — 위/좌 밝게, 우/아래 어둡게 -->
+  <polygon points="202,154 310,154 256,214" fill="#b89bff"/>
+  <polygon points="202,154 256,214 146,214" fill="#9a5cff"/>
+  <polygon points="310,154 366,214 256,214" fill="#7e3aef"/>
+  <polygon points="146,214 256,214 256,362" fill="#7636e8"/>
+  <polygon points="256,214 366,214 256,362" fill="#5a1cc0"/>
+  <!-- 패싯 라인 (반폭 1.5 → 선 굵기 3) -->
+  <path
+    d="M202 154H310M202 154L146 214M310 154L366 214M146 214H366M202 154L256 214M310 154L256 214M146 214L256 362M366 214L256 362M256 214V362"
+    fill="none" stroke="#d9c2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
