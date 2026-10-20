@@ -1,0 +1,314 @@
+/* 보드게임 모음 — 전역 스타일.
+   팔레트는 나인 멘스 모리스(src/index.css)와 같은 변수를 쓴다(게임들과 같은 톤).
+   테마는 index.html 스크립트·useTheme 이 <html data-theme="dark|light"> 로 심는다. 색은 전부 여기 변수에서만 나온다. */
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface-2: #1c2430;
+  --line: #2b3542;
+  --text: #e6edf3;
+  --muted: #8b98a9;
+  --accent: #6ea8fe;
+  --accent-soft: rgba(110, 168, 254, 0.16);
+  /* accent 위 글자색. 다크의 밝은 파랑 위 흰 글자는 대비 2.4:1 이라 어두운 글자(약 7.9:1)를 쓴다. */
+  --on-accent: #0d1117;
+  --hint: #f0b429;
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --line: #dde2e9;
+  --text: #1b2027;
+  --muted: #5d6875;
+  --accent: #2f6fd0;
+  --accent-soft: rgba(47, 111, 208, 0.12);
+  --on-accent: #ffffff;
+  /* NMM 의 #b7791f 는 흰 카드 위 작은 글자(준비 중 배지)에서 대비 3.6:1 이라 한 톤 어둡게(5.2:1). */
+  --hint: #956214;
+
+  --shadow: 0 10px 28px rgba(20, 30, 45, 0.14);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic',
+    system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── 레이아웃 (모바일 우선) ───────────────────────────────────────────── */
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 32px
+    max(16px, env(safe-area-inset-left));
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+main {
+  flex: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  min-width: 0;
+}
+
+.brand h1 {
+  font-size: 1.35rem;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.brand .sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.theme-btn {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  line-height: 1;
+  font-size: 1.05rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.theme-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+}
+
+/* ── 게임 카드 그리드 ─────────────────────────────────────────────────── */
+
+.game-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.game-grid > li {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.game-card {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow);
+}
+
+.game-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.game-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  /* 아이콘 바탕이 페이지 배경과 같은 색이어도 경계가 보이도록 */
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.game-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
+.game-title h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.game-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.tag-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.game-actions {
+  /* 카드 높이가 달라도 버튼 줄은 카드 바닥에 맞춘다 */
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary,
+.btn-ghost {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  padding: 0 16px;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.btn-primary {
+  flex: 1;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  font-weight: 600;
+  transition: filter 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+/* 라이트는 흰 글자라 밝히면 대비가 4.5:1 아래로 떨어진다 — 대신 살짝 어둡게. */
+:root[data-theme='light'] .btn-primary:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-ghost:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+}
+
+/* ── 준비 중 카드 ─────────────────────────────────────────────────────── */
+
+.game-card.is-soon {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.game-card.is-soon .game-icon {
+  filter: grayscale(0.5);
+  opacity: 0.75;
+}
+
+.badge-soon {
+  border: 1px solid var(--hint);
+  color: var(--hint);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── 푸터 ─────────────────────────────────────────────────────────────── */
+
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.footer a {
+  color: var(--muted);
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
