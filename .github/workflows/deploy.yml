@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+# main 머지 → https://khkim3115.github.io/ (유저 사이트 루트) 배포.
+# 게임들은 각자 프로젝트 사이트(/YachtDice_Helper/ 등)로 따로 배포되며 이 워크플로와 무관하다.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# GITHUB_TOKEN 권한: Pages 배포에 필요
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 동시 배포 1개만(진행 중이면 취소)
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # games.ts 무결성(링크·아이콘) 검사가 깨지면 배포하지 않는다.
+      - run: npm test
+      # tsc + vite build. 백엔드가 없어 환경변수 주입은 없다.
+      - run: npm run build
+      # 최초 1회 레포 Settings → Pages → Source = 'GitHub Actions' 를 수동으로 설정해야 한다
+      # (기본 GITHUB_TOKEN 으로는 Pages 를 활성화할 수 없어, 설정 전에는 이 스텝이 실패한다).
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
