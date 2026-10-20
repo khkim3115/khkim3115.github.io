@@ -5,7 +5,5 @@ export default defineConfig({
   test: {
     environment: 'node',
     include: ['src/**/*.test.ts'],
-    // 첫 테스트는 #2(games.ts 검증)에서 들어온다. 그때 이 옵션을 지운다.
-    passWithNoTests: true,
   },
 });

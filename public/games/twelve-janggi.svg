@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 십이장기 자리표시 아이콘(게임 레포가 아직 없어 허브에서 새로 그림).
+       나인 멘스 모리스 아이콘과 같은 바탕색(#0d1117)·판 선 색(#47586c) + 3×4 판 위의 팔각 장기말(王). -->
+  <rect width="512" height="512" rx="96" fill="#0d1117"/>
+  <!-- 3×4 판 -->
+  <g fill="none" stroke="#47586c" stroke-width="8" stroke-linecap="round">
+    <rect x="96" y="43" width="320" height="426" rx="6"/>
+    <path d="M202.7 43V469M309.3 43V469M96 149.5H416M96 256H416M96 362.5H416"/>
+  </g>
+  <!-- 팔각 장기말 -->
+  <polygon points="198.6,117.4 313.4,117.4 394.6,198.6 394.6,313.4 313.4,394.6 198.6,394.6 117.4,313.4 117.4,198.6"
+    fill="#f2e7d3" stroke="#c9b48f" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="207,137.7 305,137.7 374.3,207 374.3,305 305,374.3 207,374.3 137.7,305 137.7,207"
+    fill="none" stroke="#9d8666" stroke-width="4" stroke-linejoin="round" opacity="0.5"/>
+  <!-- 王 (초록 진영) — 글꼴 의존 없이 도형으로 -->
+  <g fill="#1f8b3a">
+    <rect x="196" y="186" width="120" height="18" rx="4"/>
+    <rect x="206" y="247" width="100" height="18" rx="4"/>
+    <rect x="186" y="310" width="140" height="20" rx="4"/>
+    <rect x="247" y="186" width="18" height="144" rx="4"/>
+  </g>
+</svg>
