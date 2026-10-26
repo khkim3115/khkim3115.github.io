@@ -3,7 +3,7 @@
 
 export type Theme = 'dark' | 'light';
 
-/** 같은 출처(khkim3115.github.io)의 게임들이 쓰는 nmm_·yd_ 키와 겹치지 않게 hub_ 접두어. */
+/** 같은 출처(khkim3115.github.io)의 게임들이 쓰는 nmm_·yd_·tj_ 키와 겹치지 않게 hub_ 접두어. */
 export const THEME_KEY = 'hub_theme';
 
 /** 모바일 주소창 색(<meta name="theme-color">). index.css 의 --bg 와 같다. */
