@@ -61,7 +61,7 @@ npm run typecheck
   충돌할 수 있습니다. `vite-plugin-pwa`·manifest 도 넣지 않습니다.
 - **백엔드 없음** — Supabase·로그인·공용 상태를 쓰지 않는, 링크만 모으는 정적 페이지입니다.
 - **같은 출처 공유** — 게임들과 `khkim3115.github.io` 출처(localStorage)를 공유하므로 허브의 키는 `hub_` 접두어를
-  씁니다(현재 `hub_theme` 하나). 게임들은 `nmm_`·`yd_` 접두어를 씁니다.
+  씁니다(현재 `hub_theme` 하나). 게임들은 `nmm_`·`yd_`·`tj_` 접두어를 씁니다.
 - Vite `base` 는 유저 사이트 루트에 맞춘 `'/'` 입니다.
 
 ## 테마

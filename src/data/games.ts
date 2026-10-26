@@ -71,11 +71,11 @@ export const GAMES: Game[] = [
   {
     id: 'twelve-janggi',
     name: '십이장기',
-    summary: '3×4 작은 판에서 왕·장·상·자 네 말로 두는 미니 장기',
-    tags: [],
-    liveUrl: '',
-    repoUrl: '',
+    summary: '3×4 작은 판에서 왕·장·상·자 네 말로 두는 미니 장기. 난이도별 AI와 1:1 온라인 대전',
+    tags: ['솔로 AI', '온라인 멀티'],
+    liveUrl: 'https://khkim3115.github.io/TwelveJanggi/',
+    repoUrl: 'https://github.com/khkim3115/TwelveJanggi',
     iconPath: 'games/twelve-janggi.svg',
-    status: 'soon',
+    status: 'live',
   },
 ];
